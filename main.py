@@ -25,7 +25,7 @@ root.geometry(f"{window_width}x{window_height}+{position_right}+{position_down}"
 chart_width = window_width
 chart_height = int(window_height * 0.4)
 chart_area = tk.Canvas(root, width=chart_width, height=chart_height, bg="lightgray")
-
+chart_area.pack(side=tk.TOP, pady=(10, 0))
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
