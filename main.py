@@ -29,9 +29,7 @@ chart_area.pack(side=tk.TOP, pady=(10, 0))
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
-mainframe.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-mainframe.columnconfigure(0, weight=1)
-mainframe.rowconfigure(0, weight=1)
+mainframe.pack(fill=tk.BOTH, expand=True)
 
 #Adding Widgets.
 pair_label = ttk.Label(mainframe, text="Crypto Pair (adding pairs later):")
