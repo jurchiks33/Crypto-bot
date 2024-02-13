@@ -21,6 +21,12 @@ position_down = int(screen_height / 2 - window_height / 2)
 
 root.geometry(f"{window_width}x{window_height}+{position_right}+{position_down}")
 
+#Chart Area 40% of applications size, change as needed.
+chart_width = window_width
+chart_height = int(window_height * 0.4)
+chart_area = tk.Canvas(root, width=chart_width, height=chart_height, bg="lightgray")
+
+
 #Adding Grid.
 mainframe = ttk.Frame(root)
 mainframe.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
