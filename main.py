@@ -8,3 +8,13 @@ def start_bot():
     print(f"Sell Treshold: {sell_treshold_entry.get()}")
 
 #Main Window.
+root = tk.Tk()
+root.title("Crypto Trading Bot")
+
+#Adding Grid.
+mainframe = ttk.Frame(root)
+mainframe.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+mainframe.columnconfigure(0, weight=1)
+mainframe.rowconfigure(0, weight=1)
+
+#Adding Widgets.
