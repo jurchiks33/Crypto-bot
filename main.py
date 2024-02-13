@@ -11,6 +11,16 @@ def start_bot():#Here is coming trading bot logic.
 root = tk.Tk()
 root.title("Crypto Trading Bot")
 
+#Window size is set up to 70% of screen size. Change as needed.
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+window_width = int(screen_width * 0.7)
+window_height = int(screen_height * 0.7)
+position_right = int(screen_width / 2 - window_width / 2)
+position_down = int(screen_height / 2 - window_height / 2)
+
+root.geometry(f"{window_width}x{window_height}+{position_right}+{position_down}")
+
 #Adding Grid.
 mainframe = ttk.Frame(root)
 mainframe.grid(column=0, row=0, sticky=(tk.W, tk.E, tk.N, tk.S))
