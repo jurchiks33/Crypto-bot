@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-def start_bot():
+def start_bot():#Here is coming trading bot logic.
     print("Bot started with the following parameters:")
     print(f"Crypto Pair: {pair_entry.get()}")
     print(f"Buy Treshold: {buy_threshold_entry.get()}")
@@ -33,3 +33,12 @@ sell_threshold_label.grid(column=0, row=2, sticky=tk.W)
 sell_threshold_entry = ttk.Entry(mainframe)
 sell_threshold_entry.grid(column=1, row=2, sticky=(tk.W, tk.E))
 
+start_button = ttk.Button(mainframe, text="Start Bot", command=start_bot)
+start_button.grid(column=1, row=3, sticky=tk.W)
+
+for child in mainframe.winfo_children():
+    child.grid_configure(padx=5, pady=5)
+
+pair_entry.focus()
+
+root.mainloop()
