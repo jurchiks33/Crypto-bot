@@ -44,7 +44,7 @@ pair_listbox.pack(side=tk.TOP, anchor='ne', padx=(0, 10))
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
-mainframe.pack(fill=tk.BOTH, expand=True)
+mainframe.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
 
 #Adding Widgets.
 pair_label = ttk.Label(mainframe, text="Crypto Pair")
