@@ -30,21 +30,25 @@ position_down = int(screen_height / 2 - window_height / 2)
 
 root.geometry(f"{window_width}x{window_height}+{position_right}+{position_down}")
 
+#Container for chart and listbox.
+top_frame = tk.Frame(root)
+top_frame.pack(side=tk.TOP, fill=tk.X)
+
 #Chart Area 40% of applications size, change as needed.
 chart_width = int(window_width * 0.6)
 chart_height = int(window_height * 0.4)
-chart_area = tk.Canvas(root, width=chart_width, height=chart_height, bg="lightgray")
-chart_area.pack(side=tk.TOP, fill=tk.X, expand=True)
+chart_area = tk.Canvas(top_frame, width=chart_width, height=chart_height, bg="lightgray")
+chart_area.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
 #Listbox for selecting crypto pair.
-pair_listbox = tk.Listbox(root, exportselection=False)
+pair_listbox = tk.Listbox(top_frame, exportselection=False)
 for pair in crypto_pairs:
     pair_listbox.insert(tk.END, pair)
-pair_listbox.pack(side=tk.RIGHT, fill=tk.Y, expand=False)
+pair_listbox.pack(side=tk.LEFT, fill=tk.BOTH)
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
-mainframe.pack(fill=tk.TOP, fill=tk.BOTH, expand=True)
+mainframe.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
 #Adding Widgets.
 buy_threshold_label = ttk.Label(mainframe, text="Buy Treshold:")
