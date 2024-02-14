@@ -39,10 +39,15 @@ mainframe = ttk.Frame(root)
 mainframe.pack(fill=tk.BOTH, expand=True)
 
 #Adding Widgets.
-pair_label = ttk.Label(mainframe, text="Crypto Pair (adding pairs later):")
+pair_label = ttk.Label(mainframe, text="Crypto Pair")
 pair_label.grid(column=0, row=0, sticky=tk.W)
-pair_entry = ttk.Entry(mainframe)
-pair_entry.grid(column=1, row=0, sticky=(tk.W, tk.E))
+# pair_entry = ttk.Entry(mainframe)
+# pair_entry.grid(column=1, row=0, sticky=(tk.W, tk.E))
+
+#Box for selecting crypto.
+crypto_pair_combobox = ttk.Combobox(mainframe, values=crypto_pairs)
+crypto_pair_combobox.grid(column=0, row=1, sticky=(tk.W, tk.E))
+crypto_pair_combobox.set('Select a pair')
 
 buy_threshold_label = ttk.Label(mainframe, text="Buy Treshold:")
 buy_threshold_label.grid(column=0, row=2, sticky=tk.W)
