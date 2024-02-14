@@ -1,6 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
 
+crypto_pairs = [
+    'BTC-USD', 'ETH-USD', 'XRP-USD', 'BCH-USD', 'LTC-USD',
+    'EOS-USD', 'BNB-USD', 'BSV-USD', 'USDT-USD', 'ADA-USD',
+    
+]
+
 def start_bot():#Here is coming trading bot logic.
     print("Bot started with the following parameters:")
     print(f"Crypto Pair: {pair_entry.get()}")
