@@ -39,6 +39,8 @@ chart_area.pack(side=tk.TOP, pady=(10, 0))
 #Listbox for selecting crypto pair.
 pair_listbox = tk.Listbox(root, exportselection=False)
 for pair in crypto_pairs:
+    pair_listbox.insert(tk.END, pair)
+pair_listbox.pack(side=tk.TOP, anchor='ne', padx=(0, 10))
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
