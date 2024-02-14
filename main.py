@@ -4,7 +4,8 @@ from tkinter import ttk
 crypto_pairs = [
     'BTC-USD', 'ETH-USD', 'XRP-USD', 'BCH-USD', 'LTC-USD',
     'EOS-USD', 'BNB-USD', 'BSV-USD', 'USDT-USD', 'ADA-USD',
-    
+    'XLM-USD', 'TRX-USD', 'MIOTA-USD', 'DASH-USD', 'XMR-USD',
+    'XTZ-USD', 'ETC-USD', 'NEO-USD', 'MKR-USD', 'ONT-USD'
 ]
 
 def start_bot():#Here is coming trading bot logic.
