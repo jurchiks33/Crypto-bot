@@ -44,7 +44,7 @@ pair_listbox.pack(side=tk.RIGHT, fill=tk.Y, expand=False)
 
 #Adding Grid.
 mainframe = ttk.Frame(root)
-mainframe.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
+mainframe.pack(fill=tk.TOP, fill=tk.BOTH, expand=True)
 
 #Adding Widgets.
 buy_threshold_label = ttk.Label(mainframe, text="Buy Treshold:")
