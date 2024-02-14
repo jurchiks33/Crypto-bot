@@ -9,8 +9,10 @@ crypto_pairs = [
 ]
 
 def start_bot():#Here is coming trading bot logic.
+    selected_pair_index = pair_listbox.curselection()
+    selected_pair = crypto_pairs[selected_pair_index[0]] if selected_pair_index else ""
     print("Bot started with the following parameters:")
-    print(f"Crypto Pair: {pair_entry.get()}")
+    print(f"Crypto Pair: {selected_pair}")
     print(f"Buy Treshold: {buy_threshold_entry.get()}")
     print(f"Sell Treshold: {sell_threshold_entry.get()}")
 
@@ -64,7 +66,5 @@ start_button.grid(column=1, row=3, sticky=tk.W)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5, pady=5)
-
-pair_entry.focus()
 
 root.mainloop()
