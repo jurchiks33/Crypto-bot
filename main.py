@@ -36,6 +36,10 @@ chart_height = int(window_height * 0.4)
 chart_area = tk.Canvas(root, width=chart_width, height=chart_height, bg="lightgray")
 chart_area.pack(side=tk.TOP, pady=(10, 0))
 
+#Listbox for selecting crypto pair.
+pair_listbox = tk.Listbox(root, exportselection=False)
+for pair in crypto_pairs:
+
 #Adding Grid.
 mainframe = ttk.Frame(root)
 mainframe.pack(fill=tk.BOTH, expand=True)
