@@ -85,6 +85,9 @@ for pair in crypto_pairs:
     pair_listbox.insert(tk.END, pair)
 pair_listbox.pack(side=tk.LEFT, fill=tk.BOTH)
 
+#Bind the listbox select event to the update_chart function.
+pair_listbox.bind('<<ListboxSelect>>', update_chart)
+
 #Adding Grid.
 mainframe = ttk.Frame(root)
 mainframe.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
