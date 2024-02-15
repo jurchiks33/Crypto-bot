@@ -14,14 +14,13 @@ crypto_pairs = [
 ]
 
 def fetch_candlestick_data(pair):
-    #Convert format for yahoo finance from "XXX-YYY" to "XXXYYY=X".
-    yf_pair = pair.replace('-', '') + "=X"
-
+    #Fetching historical data directly from provider.
     end_date = pd.Timestamp.now()
     start_date = end_date - pd.DateOffset(months=6)
 
     #Fetching historical market data.
-    df = yf.download(yf_pair, start=start_date, end=end_date)
+    df = yf.download(pair, start=start_date.strftime('%Y-%m-%d'), 
+                     end=end_date.strftime('%Y-%m-%d'))
 
     if not df.empty:
         df.rename(columns={"Open": "Open", "High": "High", "Low": "Low", 
@@ -29,6 +28,7 @@ def fetch_candlestick_data(pair):
         return df
     else:
         print(f"No data found {pair}")
+        return pd.DataFrame()
 
 def update_chart(event):
     selected_pair_index = pair_listbox.curselection()
