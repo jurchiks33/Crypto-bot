@@ -3,6 +3,7 @@ from tkinter import ttk
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import mplfinance as mpf
+import yfinance as yf
 import pandas as pd
 
 crypto_pairs = [
@@ -11,6 +12,23 @@ crypto_pairs = [
     'XLM-USD', 'TRX-USD', 'MIOTA-USD', 'DASH-USD', 'XMR-USD',
     'XTZ-USD', 'ETC-USD', 'NEO-USD', 'MKR-USD', 'ONT-USD'
 ]
+
+def fetch_candlestick_data(pair):
+    #Convert format for yahoo finance from "XXX-YYY" to "XXXYYY=X".
+    yf_pair = pair.replace('-', '') + "=X"
+
+    end_date = pd.Timestamp.now()
+    start_date = end_date - pd.DateOffset(months=6)
+
+    #Fetching historical market data.
+    df = yf.download(yf_pair, start=start_date, end=end_date)
+
+    if not df.empty:
+        df.rename(columns={"Open": "Open", "High": "High", "Low": "Low", 
+                           "Close": "Adj Close", "Volume": "Volume"}, inplace=True)
+        return df
+    else:
+        print(f"No data found {pair}")
 
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
