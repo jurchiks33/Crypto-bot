@@ -24,7 +24,7 @@ def fetch_candlestick_data(pair):
 
     if not df.empty:
         df.rename(columns={"Open": "Open", "High": "High", "Low": "Low", 
-                           "Close": "Adj Close", "Volume": "Volume"}, inplace=True)
+                           "Close": "Close", "Volume": "Volume"}, inplace=True)
         return df
     else:
         print(f"No data found {pair}")
@@ -37,20 +37,18 @@ def update_chart(event):
         df = fetch_candlestick_data(selected_pair)
 
         if not df.empty:
+            #Clear previous chart.
+            for widget in chart_area.winfo_children():
+                widget.destroy()
+
             #Plotting candlestick data.
-            fig, ax = plt.subplots(figsize=(10, 6))
-            mpf.plot(df, type='candle', ax=ax, volume=True)
+            fig = mpf.figure(style='charles', figsize=(10, 6))
+            ax1 = fig.add_subplot(1,1,1)
+            
+            #Plotting candlestick
+            mpf.plot(df, type='candle', mav=(3,6,9), volume=True, ax=ax1, show_nontrading=True)
 
-            #Clear previous chart
-            chart_area.delete("all")
-
-            #Create new canvas and add plot to it.
-            canvas = FigureCanvasTkAgg(fig, master=chart_area)
-            canvas_widget = canvas.get_tk_widget()
-            canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-            canvas.draw()
-        else:
-            print(f"No data found for {selected_pair}")
+            #Create a new canwas and add plot to it.
 
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
