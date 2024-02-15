@@ -49,6 +49,13 @@ def update_chart(event):
             mpf.plot(df, type='candle', mav=(3,6,9), volume=True, ax=ax1, show_nontrading=True)
 
             #Create a new canwas and add plot to it.
+            canvas = FigureCanvasTkAgg(fig, master=chart_area)
+            canvas.draw()
+
+            #Pack canvas widget in tkinter chart area.
+            canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        else:
+            print(f"No data found for {selected_pair}")
 
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
