@@ -37,22 +37,24 @@ def update_chart(event):
         df = fetch_candlestick_data(selected_pair)
 
         if not df.empty:
-            #Clear previous chart.
+            # Clear previous chart
             for widget in chart_area.winfo_children():
                 widget.destroy()
 
-            #Plotting candlestick data.
+            # Creating mplfinance figure and subplots for candlestick and volume
             fig = mpf.figure(style='charles', figsize=(10, 6))
-            ax1 = fig.add_subplot(1,1,1)
-            
-            #Plotting candlestick
-            mpf.plot(df, type='candle', mav=(3,6,9), volume=True, ax=ax1, show_nontrading=True)
+            ax1 = fig.add_subplot(2, 1, 1)
+            ax2 = fig.add_subplot(2, 1, 2, sharex=ax1)
 
-            #Create a new canwas and add plot to it.
+            # Plotting the candlestick chart with moving averages
+            # Volume plot requires creating a separate subplot for volume (ax2)
+            mpf.plot(df, type='candle', mav=(3,6,9), volume=ax2, ax=ax1, show_nontrading=True)
+
+            # Embedding the mplfinance figure in the Tkinter window
             canvas = FigureCanvasTkAgg(fig, master=chart_area)
             canvas.draw()
 
-            #Pack canvas widget in tkinter chart area.
+            # Pack the canvas widget in the Tkinter chart area
             canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         else:
             print(f"No data found for {selected_pair}")
