@@ -30,6 +30,15 @@ def fetch_candlestick_data(pair):
     else:
         print(f"No data found {pair}")
 
+def update_chart(event):
+    selected_pair_index = pair_listbox.curselection()
+    selected_pair = crypto_pairs[selected_pair_index[0]] if selected_pair_index else None
+    if selected_pair:
+        df = fetch_candlestick_data(selected_pair)
+
+        #Plotting candlestick data.
+        
+
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
     selected_pair = crypto_pairs[selected_pair_index[0]] if selected_pair_index else ""
