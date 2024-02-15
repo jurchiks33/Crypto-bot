@@ -37,7 +37,15 @@ def update_chart(event):
         df = fetch_candlestick_data(selected_pair)
 
         #Plotting candlestick data.
-        
+        fig, ax = plt.subplot()
+        mpf.plot(df, type='candle', ax=ax, volume=True)
+        #Clear previous chart
+        chart_area.delete("all")
+        #Create new canvas and add plot to it.
+        canvas = FigureCanvasTkAgg(fig, master=chart_area)
+        canvas_widget = canvas.get_tk_widget()
+        canvas_widget.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        canvas.draw()
 
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
