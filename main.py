@@ -73,9 +73,10 @@ def start_bot():#Here is coming trading bot logic.
     print(f"Crypto Pair: {selected_pair}")
     buy_threshold = float(buy_threshold_entry.get())
     sell_threshold = float(sell_threshold_entry.get())
-    
-    print(f"Buy Treshold: {buy_threshold_entry.get()}")
-    print(f"Sell Treshold: {sell_threshold_entry.get()}")
+    historical_data = fetch_candlestick_data(selected_pair)
+    if historical_data.empty:
+        print(f"No historical data found for {selected_pair}.")
+        return
 
 #Main Window.
 root = tk.Tk()
