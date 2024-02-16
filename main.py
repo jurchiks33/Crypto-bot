@@ -77,6 +77,10 @@ def start_bot():#Here is coming trading bot logic.
     if historical_data.empty:
         print(f"No historical data found for {selected_pair}.")
         return
+    historical_data['Short_MA'] = calculate_moving_average(historical_data, 50)
+    historical_data['Long_MA'] = calculate_moving_average(historical_data, 200)
+    latest_data = historical_data.iloc[-1]
+    
 
 #Main Window.
 root = tk.Tk()
