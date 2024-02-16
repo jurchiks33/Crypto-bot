@@ -82,7 +82,10 @@ def start_bot():#Here is coming trading bot logic.
     latest_data = historical_data.iloc[-1]
     if latest_data['Short_MA'] > latest_data['Long_MA'] and latest_data['Close'] > buy_threshold:
         print("Buy signal detected based on moving averages and buy treshold.")
-    
+    elif latest_data['Short_MA'] < latest_data['Long_MA'] and latest_data['Close'] < sell_threshold:
+        print("Sell signal detected based on moving averages and sell treshold.")
+    else:
+        print("No clear signal. Hold.")
 
 #Main Window.
 root = tk.Tk()
