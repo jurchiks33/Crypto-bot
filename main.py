@@ -80,6 +80,8 @@ def start_bot():#Here is coming trading bot logic.
     historical_data['Short_MA'] = calculate_moving_average(historical_data, 50)
     historical_data['Long_MA'] = calculate_moving_average(historical_data, 200)
     latest_data = historical_data.iloc[-1]
+    if latest_data['Short_MA'] > latest_data['Long_MA'] and latest_data['Close'] > buy_threshold:
+        print("Buy signal detected based on moving averages and buy treshold.")
     
 
 #Main Window.
