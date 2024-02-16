@@ -66,8 +66,14 @@ def update_chart(event):
 def start_bot():#Here is coming trading bot logic.
     selected_pair_index = pair_listbox.curselection()
     selected_pair = crypto_pairs[selected_pair_index[0]] if selected_pair_index else ""
+    if not selected_pair:
+        print("No cryptocurrency pair selected.")
+        return
     print("Bot started with the following parameters:")
     print(f"Crypto Pair: {selected_pair}")
+    buy_threshold = float(buy_threshold_entry.get())
+    sell_threshold = float(sell_threshold_entry.get())
+    
     print(f"Buy Treshold: {buy_threshold_entry.get()}")
     print(f"Sell Treshold: {sell_threshold_entry.get()}")
 
