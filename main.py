@@ -5,6 +5,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import mplfinance as mpf
 import yfinance as yf
 import pandas as pd
+import numpy as np
 
 crypto_pairs = [
     'BTC-USD', 'ETH-USD', 'XRP-USD', 'BCH-USD', 'LTC-USD',
@@ -29,6 +30,9 @@ def fetch_candlestick_data(pair):
     else:
         print(f"No data found {pair}")
         return pd.DataFrame()
+
+def calculate_moving_average(data, window_size):
+    return data['Close'].rolling(window=window_size).mean()
 
 def update_chart(event):
     selected_pair_index = pair_listbox.curselection()
